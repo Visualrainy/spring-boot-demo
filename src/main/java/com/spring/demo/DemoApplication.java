@@ -1,5 +1,7 @@
 package com.spring.demo;
 
+import com.spring.demo.config.AuthorConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class DemoApplication {
 
+    @Autowired
+    private AuthorConfig authorConfig;
+
     @Value("${project.author}")
     private String projectAuthor;
 
@@ -23,7 +28,8 @@ public class DemoApplication {
 
     @RequestMapping("/")
     String index() {
-        return "Project author is " + projectAuthor + "; Project name is " + projectName;
+//        return "Project author is " + projectAuthor + "; Project name is " + projectName;
+        return "Project author is " + authorConfig.getName() + "; Project name is " + authorConfig.getAge();
     }
 
     public static void main(String[] args) {
