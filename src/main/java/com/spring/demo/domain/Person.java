@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name = "Person.withNameAndAddressNameQuery",
+@NamedQuery(name = "Person.withNameAndAddressNamedQuery",
 query = "select p from Person p where p.name=?1 and address=?2")
 public class Person {
     @Id
