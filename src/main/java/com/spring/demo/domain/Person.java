@@ -30,6 +30,10 @@ public class Person {
     @Getter
     private String address;
 
+    public Person() {
+        super();
+    }
+
     public Person(Long id, String name, Integer age, String address) {
         super();
         this.id = id;
