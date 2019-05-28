@@ -65,4 +65,11 @@ public class DataController {
 
         return personList;
     }
+
+    @RequestMapping("/auto")
+    public Page<Person> auto(Person person) {
+        Page<Person> personList = personRepository.findByAuto(person, PageRequest.of(0, 10));
+
+        return personList;
+    }
 }
