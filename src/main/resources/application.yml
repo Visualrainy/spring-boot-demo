@@ -1,0 +1,6 @@
+server.port: 8090
+server.servlet.context-path: /hello
+#inject custom value
+project:
+  author: Peng
+  name: spring-demo
