@@ -4,9 +4,12 @@ import com.spring.demo.domain.Person;
 import com.spring.demo.support.CustomRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import java.util.List;
 
+@RepositoryRestResource(path = "persons")
 public interface PersonRepository extends CustomRepository<Person, Long> {
     List<Person> findByAddress(String name);
 
@@ -16,4 +19,7 @@ public interface PersonRepository extends CustomRepository<Person, Long> {
     Person withNameAndAddressQuery(@Param("name") String name, @Param("address") String address);
 
     Person withNameAndAddressNamedQuery(String name, String address);
+
+    @RestResource(path = "nameStartsWith", rel = "nameStartsWith")
+    Person findByNameStartsWith(@Param("name") String name);
 }
