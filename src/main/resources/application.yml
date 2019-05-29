@@ -18,6 +18,15 @@ spring:
   activemq:
     broker-url: tcp://localhost:61616
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
 server.port: 8090
 server.servlet.context-path: /hello
 #inject custom value
