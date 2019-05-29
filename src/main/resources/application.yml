@@ -26,7 +26,10 @@ management:
   endpoint:
     health:
       show-details: always
-
+  server:
+    servlet:
+      context-path: /manage
+    port: 8081
 server.port: 8090
 server.servlet.context-path: /hello
 #inject custom value
