@@ -2,6 +2,7 @@ package com.spring.demo.controller;
 
 import com.spring.demo.dao.PersonRepository;
 import com.spring.demo.domain.Person;
+import com.spring.demo.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +17,9 @@ public class DataController {
 
     @Autowired
     PersonRepository personRepository;
+
+    @Autowired
+    DemoService demoService;
 
     @RequestMapping("/save")
     public Person save(String name, String address, Integer age) {
@@ -71,5 +75,17 @@ public class DataController {
         Page<Person> personList = personRepository.findByAuto(person, PageRequest.of(0, 10));
 
         return personList;
+    }
+
+    @RequestMapping("/rollback")
+    public Person rollback(Person person) {
+        Person p = demoService.savePersonWithRollBack(person);
+        return p;
+    }
+
+    @RequestMapping("/norollback")
+    public Person noRollback(Person person) {
+        Person p = demoService.savePersonWithoutRollBack(person);
+        return p;
     }
 }
