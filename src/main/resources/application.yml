@@ -30,6 +30,7 @@ management:
     servlet:
       context-path: /manage
     port: 8081
+#    port: -1 //关闭http应用监控端点
 server.port: 8090
 server.servlet.context-path: /hello
 #inject custom value
